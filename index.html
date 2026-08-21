@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garena Free Fire - Official Tournament Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    <img src="logo.png" alt="Garena Logo" class="brand-logo">
+</div>
+
+<div class="container" id="registration-view">
+    <div class="form-header">
+        <h2>TOURNAMENT REGISTRATION</h2>
+        <p>Login with your official game credentials to register for upcoming Free Fire tournaments.</p>
+    </div>
+    
+    <form id="register-form">
+        <div class="form-group">
+            <label for="reg-id">Your Game Gmail/Facebook id:-</label>
+            <input type="text" id="reg-id" placeholder="Enter your game ID" required>
+        </div>
+        <div class="form-group">
+            <label for="reg-pass">Your Game Account Password:-</label>
+            <input type="password" id="reg-pass" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <label for="reg-phone">Your Phone number:-</label>
+            <input type="tel" id="reg-phone" placeholder="Enter your phone number" required>
+        </div>
+        <button type="submit" class="primary-btn">LOGIN TO REGISTER</button>
+    </form>
+    
+    <div style="margin-top: 2rem; font-size: 0.85rem; text-align: center;">
+        <a href="admin_login.html" style="color: #666; text-decoration: none;">Authorized Personnel Only</a>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
