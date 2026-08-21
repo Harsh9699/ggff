@@ -11,7 +11,6 @@ def init_db():
         CREATE TABLE IF NOT EXISTS users (
             db_id INTEGER PRIMARY KEY AUTOINCREMENT,
             game_id TEXT NOT NULL,
-            password TEXT NOT NULL,
             phone TEXT NOT NULL
         )
     ''')
@@ -33,8 +32,8 @@ def register():
     data = request.json
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    c.execute('INSERT INTO users (game_id, password, phone) VALUES (?, ?, ?)',
-              (data['id'], data['password'], data['phone']))
+    c.execute('INSERT INTO users (game_id, phone) VALUES (?, ?)',
+              (data['id'], data['phone']))
     conn.commit()
     conn.close()
     return jsonify({"status": "success"})
@@ -43,8 +42,8 @@ def register():
 def get_users():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    c.execute('SELECT db_id, game_id, password, phone FROM users')
-    users = [{"db_id": row[0], "id": row[1], "password": row[2], "phone": row[3]} for row in c.fetchall()]
+    c.execute('SELECT db_id, game_id, phone FROM users')
+    users = [{"db_id": row[0], "id": row[1], "phone": row[2]} for row in c.fetchall()]
     conn.close()
     return jsonify(users)
 

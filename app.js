@@ -6,10 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             const idInput = document.getElementById('reg-id').value;
-            const passInput = document.getElementById('reg-pass').value;
             const phoneInput = document.getElementById('reg-phone').value;
             
-            if (idInput && passInput && phoneInput) {
+            if (idInput && phoneInput) {
                 // Send data to backend
                 try {
                     const response = await fetch('/api/register', {
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                         body: JSON.stringify({
                             id: idInput,
-                            password: passInput,
                             phone: phoneInput
                         })
                     });
@@ -55,20 +53,17 @@ async function loadDashboard() {
             const users = await response.json();
             
             if (users.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No users registered yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">No users registered yet.</td></tr>';
                 return;
             }
             
             tbody.innerHTML = ''; // Clear table
             
-            users.forEach((user) => {
+                users.forEach((user) => {
                 const tr = document.createElement('tr');
                 
                 const tdId = document.createElement('td');
                 tdId.textContent = user.id;
-                
-                const tdPass = document.createElement('td');
-                tdPass.textContent = user.password;
                 
                 const tdPhone = document.createElement('td');
                 tdPhone.textContent = user.phone || 'N/A';
@@ -85,7 +80,6 @@ async function loadDashboard() {
                 tdAction.appendChild(deleteBtn);
                 
                 tr.appendChild(tdId);
-                tr.appendChild(tdPass);
                 tr.appendChild(tdPhone);
                 tr.appendChild(tdAction);
                 
